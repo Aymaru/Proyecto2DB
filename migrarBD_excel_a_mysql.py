@@ -41,15 +41,6 @@ canton.pop('')
 distrito.pop('')
 edad_quinquenal.pop('')
 
-print(sheet.nrows)
-print (sheet.ncols)
-print(provincia)
-print(canton)
-print(distrito)
-print(rol)
-print(lesion)
-print(edad_quinquenal)
-
 print("Leído archivo xls ...\n")
 
 
