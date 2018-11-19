@@ -20,6 +20,8 @@ usuario = "root"
 pwd = "root"
 puerto = 3307
 
+Es necesario que los archivos acc.xlsx y Lugares.xlsx se encuentren en la misma carpeta que el programa migrarBD_excel_a_mysql.py
+
 Para crear la base de datos:
 
 1. Abrir un query en MySQL
