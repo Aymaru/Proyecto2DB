@@ -154,3 +154,18 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 
+        'root';
+        
+update edadquinquenal
+set descripcion = "De 05 a 9 años"
+where idEdadquinquenal = 16;
+
+
+
+
+
+
+
+
