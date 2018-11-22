@@ -47,7 +47,7 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
     
     if not ( distrito is NULL ) then
 
-        SET @query_ = CONCAT (@query_ , " group by d.nombre ");
+        SET @query_ = CONCAT (@query_ , " group by p.nombre, c.nombre, d.nombre ");
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
 	
@@ -55,7 +55,7 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
 
 	elseif not ( canton is NULL ) then
     
-        SET @query_ = CONCAT (@query_ , " group by c.nombre ");
+        SET @query_ = CONCAT (@query_ , " group by p.nombre, c.nombre ");
         
         
 		PREPARE stmt FROM @query_;
@@ -93,7 +93,7 @@ else
         
         
 		PREPARE stmt FROM @query_;
-        SET @query_ = CONCAT (@query_ , " group by d.nombre ");
+        SET @query_ = CONCAT (@query_ , " group by p.nombre, c.nombre, d.nombre  ");
         PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
@@ -101,7 +101,7 @@ else
 
 	elseif not ( canton is NULL ) then
     
-		SET @query_ = CONCAT (@query_ , " group by c.nombre ");
+		SET @query_ = CONCAT (@query_ , " group by p.nombre, c.nombre");
         
         
 		PREPARE stmt FROM @query_;
