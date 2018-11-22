@@ -5,7 +5,7 @@ SET @identificador = identificador;
 
 SET @query_ = 
 
-	"select count(a.idAccidente) as Cantidad, a.anno as Anno
+	"select count(a.idAccidente) as Cantidad, a.anno as Anno, a.mes as Mes
 	from accidente a
 	inner join ubicacion u on (a.idUbicacion = u.idUbicacion)
 	inner join provincia p on (u.idProvincia = p.idProvincia)
@@ -36,7 +36,7 @@ end if;
 
 if anno_ini = "2012"  and  anno_fin = "2014" then
 	
-SET @query_ = CONCAT (@query_ , " group by a.anno ");
+SET @query_ = CONCAT (@query_ , " group by a.anno, a.mes ");
     
     select @query_;
     PREPARE stmt FROM @query_;
@@ -46,7 +46,7 @@ SET @query_ = CONCAT (@query_ , " group by a.anno ");
     
 else
 
-SET @query_ = CONCAT (@query_ , " and (a.anno = ? or a.anno = ? ) group by a.anno ");
+SET @query_ = CONCAT (@query_ , " and (a.anno = ? or a.anno = ? ) group by a.anno, a.mes ");
      
     SET @anno_ini = anno_ini;
     SET @anno_fin = anno_fin;
