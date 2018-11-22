@@ -92,47 +92,43 @@ else
      
      if not ( distrito is NULL ) then
 
-		set @group_by = CONCAT (@group_by , ", ? , ? " );
-        SET @query_ = CONCAT (@query_ , " " , @group_by);
         
         select @query_;
 		PREPARE stmt FROM @query_;
-		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin, @provincia, @canton, @distrito;
+		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
 		DEALLOCATE PREPARE stmt;
 
 	elseif not ( canton is NULL ) then
     
-		set @group_by = CONCAT (@group_by , ", ? , ? ");
-        SET @query_ = CONCAT (@query_ , " " , @group_by);
+        SET @query_ = CONCAT (@query_ , " group by d.nombre ");
         
         select @query_;
 		PREPARE stmt FROM @query_;
-		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin, @provincia, @canton , @distrito;
+		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
 		DEALLOCATE PREPARE stmt;
         
 	elseif not ( provincia is NULL ) then
     
-		set @group_by = CONCAT (@group_by , ", ? ");
-		SET @query_ = CONCAT (@query_ , " " , @group_by);
+		SET @query_ = CONCAT (@query_ , " group by c.nombre ");
         
 		select @query_;
 		PREPARE stmt FROM @query_;
-		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin, @provincia,  @canton;
+		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
-		DEALLOCATE PREPARE stmt;
-		
-     else 
-     
-		SET @query_ = CONCAT (@query_ , " " , @group_by);
+		DEALLOCATE PREPARE stmt;		
+	
+    else
+		SET @query_ = CONCAT (@query_ , " group by p.nombre ");
         
 		select @query_;
 		PREPARE stmt FROM @query_;
-		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin, @provincia;
+		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
-		DEALLOCATE PREPARE stmt;
-     
+		DEALLOCATE PREPARE stmt;	   
+    
+    
 	end if;
 
 
