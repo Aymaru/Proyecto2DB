@@ -208,7 +208,7 @@ for registro in range(1, sheet.nrows):
     idAccidente = int(ID)
     Dia = str(sheet.cell(registro,5).value)
     Mes = str(sheet.cell(registro,6).value)
-    Anno = str(sheet.cell(registro,7).value)
+    Anno = str(sheet.cell(registro,7).value).split(".")[0]
     idRolAfectado = int(sheet.cell(registro,8).value)
     idTipoLesion = int(sheet.cell(registro,10).value)
     edadAfectado = str(sheet.cell(registro,12).value)
