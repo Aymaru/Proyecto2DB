@@ -47,7 +47,7 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
     
     if not ( distrito is NULL ) then
 
-        
+        SET @query_ = CONCAT (@query_ , " group by d.nombre ");
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
 	
@@ -55,7 +55,7 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
 
 	elseif not ( canton is NULL ) then
     
-        SET @query_ = CONCAT (@query_ , " group by d.nombre ");
+        SET @query_ = CONCAT (@query_ , " group by c.nombre ");
         
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
@@ -64,7 +64,7 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
         
 	elseif not ( provincia is NULL ) then
     
-		SET @query_ = CONCAT (@query_ , " group by c.nombre ");
+		SET @query_ = CONCAT (@query_ , " group by p.nombre ");
         
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
@@ -72,7 +72,6 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
 		DEALLOCATE PREPARE stmt;		
 	
     else
-		SET @query_ = CONCAT (@query_ , " group by p.nombre ");
         
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
@@ -88,6 +87,7 @@ else
      
      if not ( distrito is NULL ) then
 
+        SET @query_ = CONCAT (@query_ , " group by d.nombre ");
         PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
@@ -95,7 +95,7 @@ else
 
 	elseif not ( canton is NULL ) then
     
-        SET @query_ = CONCAT (@query_ , " group by d.nombre ");
+		SET @query_ = CONCAT (@query_ , " group by c.nombre ");
         
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
@@ -104,7 +104,7 @@ else
         
 	elseif not ( provincia is NULL ) then
     
-		SET @query_ = CONCAT (@query_ , " group by c.nombre ");
+		SET @query_ = CONCAT (@query_ , " group by p.nombre ");
         
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
@@ -112,7 +112,6 @@ else
 		DEALLOCATE PREPARE stmt;		
 	
     else
-		SET @query_ = CONCAT (@query_ , " group by p.nombre ");
         
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
