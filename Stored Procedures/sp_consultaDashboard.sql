@@ -48,7 +48,6 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
     if not ( distrito is NULL ) then
 
         
-        select @query_;
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
 	
@@ -58,7 +57,6 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
     
         SET @query_ = CONCAT (@query_ , " group by d.nombre ");
         
-        select @query_;
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
 	
@@ -68,7 +66,6 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
     
 		SET @query_ = CONCAT (@query_ , " group by c.nombre ");
         
-		select @query_;
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
 	
@@ -77,7 +74,6 @@ if anno_ini = "2012"  and  anno_fin = "2014" then
     else
 		SET @query_ = CONCAT (@query_ , " group by p.nombre ");
         
-		select @query_;
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal;
 	
@@ -92,9 +88,7 @@ else
      
      if not ( distrito is NULL ) then
 
-        
-        select @query_;
-		PREPARE stmt FROM @query_;
+        PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
 		DEALLOCATE PREPARE stmt;
@@ -103,7 +97,6 @@ else
     
         SET @query_ = CONCAT (@query_ , " group by d.nombre ");
         
-        select @query_;
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
@@ -113,7 +106,6 @@ else
     
 		SET @query_ = CONCAT (@query_ , " group by c.nombre ");
         
-		select @query_;
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
@@ -122,7 +114,6 @@ else
     else
 		SET @query_ = CONCAT (@query_ , " group by p.nombre ");
         
-		select @query_;
 		PREPARE stmt FROM @query_;
 		EXECUTE stmt using @provincia, @canton, @distrito, @sexo, @tipo_lesion, @rol_afectado, @edad_quinquenal, @anno_ini, @anno_fin;
 	
