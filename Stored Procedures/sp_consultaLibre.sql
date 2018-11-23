@@ -21,7 +21,7 @@ where p.nombre = ?";
 
 if anno_ini = "2012"  and  anno_fin = "2014" then
 	
-SET @query_ = CONCAT (@query_ , " group by lesion.descripcion, p.nombre ");
+SET @query_ = CONCAT (@query_ , " group by lesion.descripcion, p.nombre order by lesion.descripcion");
     
     PREPARE stmt FROM @query_;
 	EXECUTE stmt using @provincia;
@@ -30,7 +30,7 @@ SET @query_ = CONCAT (@query_ , " group by lesion.descripcion, p.nombre ");
     
 else
 
-SET @query_ = CONCAT (@query_ , " and (a.anno = ? or a.anno = ? ) group by lesion.descripcion, p.nombre ");
+SET @query_ = CONCAT (@query_ , " and (a.anno = ? or a.anno = ? ) group by lesion.descripcion, p.nombre order by lesion.descripcion");
      
 
     PREPARE stmt FROM @query_;
