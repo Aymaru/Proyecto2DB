@@ -36,9 +36,8 @@ end if;
 
 if anno_ini = "2012"  and  anno_fin = "2014" then
 	
-SET @query_ = CONCAT (@query_ , " group by a.anno, a.mes ");
+SET @query_ = CONCAT (@query_ , " group by a.mes, a.anno order by a.anno ");
     
-    select @query_;
     PREPARE stmt FROM @query_;
 	EXECUTE stmt using @identificador;
 	
@@ -46,7 +45,7 @@ SET @query_ = CONCAT (@query_ , " group by a.anno, a.mes ");
     
 else
 
-SET @query_ = CONCAT (@query_ , " and (a.anno = ? or a.anno = ? ) group by a.anno, a.mes ");
+SET @query_ = CONCAT (@query_ , " and (a.anno = ? or a.anno = ? ) group by a.mes, a.anno order by a.anno");
      
     SET @anno_ini = anno_ini;
     SET @anno_fin = anno_fin;
