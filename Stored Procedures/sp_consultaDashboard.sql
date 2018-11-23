@@ -21,9 +21,6 @@ set @edad_quinquenal = edad_quinquenal;
 
 set @query_ = "
 select  count(a.idAccidente) as Cantidad, 
-		p.nombre as Provincia, 
-        c.nombre as Canton, 
-        d.nombre as Distrito, 
         u.latitud as Latitud, 
         u.longitud as Longitud        
 from accidente a
