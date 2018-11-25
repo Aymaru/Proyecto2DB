@@ -13,7 +13,9 @@ Se pueden instalar desde el shell de windows
 pip install xlrd
 pip install pymysql
 
-Es necesario tener agregado python en las variables de ambiente ( Esto se realiza en la instalacion o pueden hacerlo manualmente )
+Es necesario tener agregado python en las variables de ambiente ( Esto se realiza en la instalacion o se puede hacer manualmente )
+
+Configuración de la base de datos
 
 host = "localhost"
 usuario = "root"
@@ -28,3 +30,4 @@ Para crear la base de datos:
 2. Abrir el script Proyecto2DB.sql
 3. Ejecutar todo el query
 4. Ejecutar el programa migrarBD_excel_a_mysql.py
+5. Crear los Stored Procedure
